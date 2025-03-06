@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+</head>
+<body>
+    <h1>Attendance Recorder</h1>
+    <p class="date">Date :</p>
+    <form>
+        <label>Section : IoT</label>
+        <label style="margin-left: 100px;">Enter No. of Students </label>
+        <input id="studentCount" type="number" value="41" ></br>
+        <button onclick="printTable(event)" style="margin-top: 10px;">Submit</button>
+    </form>
+
+    <div id="tableContainer"></div> 
+    <button id="recordBtn" style="display: none;" onclick="recordAttendance()">Record Attendance</button>
+    <p id="attendanceList"></p>
+
+    <script src="./index.js"></script>
+</body>
+</html>
