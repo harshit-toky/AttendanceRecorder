@@ -1,6 +1,12 @@
+let formattedDate;
 function printDate(){
     let today = new Date();
-    let formattedDate = today.toLocaleDateString(); // Formats date based on user's locale
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    let year = String(today.getFullYear()).slice(-2); // Get last two digits of year
+    
+    formattedDate = `${day}/${month}/${year}`;
+
     document.getElementsByClassName("date")[0].textContent = "Date: " + formattedDate;
 }
 window.onload = printDate;
@@ -66,7 +72,9 @@ function recordAttendance() {
 
     let attendanceList = document.getElementById("attendanceList");
     if (presentStudents.length > 0) {
-        attendanceList.textContent = "Present Students: " + presentStudents.join(", ");
+        attendanceList.innerHTML = `<strong>Attendance - ${formattedDate}</strong><br>
+                                    <strong>Section: IoT</strong><br>
+                                    <strong>Presents:</strong> ${presentStudents.join(", ")}`;
     } else {
         attendanceList.textContent = "No students are marked present.";
     }
