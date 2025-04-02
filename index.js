@@ -64,18 +64,37 @@ function printTable(event) {
     }
     table.appendChild(tbody);
     tableContainer.appendChild(table);
-    document.getElementById("recordBtn").style.display = "block";
+    document.getElementById("AttendanceSelect").style.marginTop = "10px";
+    document.getElementById("AttendanceSelect").style.display = "flex";
+    document.getElementById("AttendanceSelect").style.gap = "20px";
 }
 function recordAttendance() {
-    let checkboxes = document.querySelectorAll('input[name="attendance"]:checked');
-    let presentStudents = Array.from(checkboxes).map(checkbox => checkbox.value); // Get checked values
-
+    let checkboxes = document.querySelectorAll('input[name="attendance"]');
+    let presentStudents = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value); // Get checked values
+    
+    let allStudents = Array.from(checkboxes).map(checkbox => checkbox.value); // Get all student names
+    let absentStudents = allStudents.filter(student => !presentStudents.includes(student)); // Determine absent students
+    
     let attendanceList = document.getElementById("attendanceList");
-    if (presentStudents.length > 0) {
-        attendanceList.innerHTML = `<strong>Attendance - ${formattedDate}</strong><br>
-                                    <strong>Section: IoT</strong><br>
-                                    <strong>Presents:</strong> ${presentStudents.join(", ")}`;
-    } else {
-        attendanceList.textContent = "No students are marked present.";
+
+    if (document.getElementById("attendanceType").value == "Present") {
+        if (presentStudents.length > 0) {
+            attendanceList.innerHTML = `<strong>Attendance - ${formattedDate}</strong><br>
+                                        <strong>Section: IoT</strong><br>
+                                        <strong>Presents:</strong> ${presentStudents.join(", ")}`;
+        } else {
+            attendanceList.textContent = "No students are marked present.";
+        }
+    } else if (document.getElementById("attendanceType").value == "Absent") {
+        if (absentStudents.length > 0) {
+            attendanceList.innerHTML = `<strong>Attendance - ${formattedDate}</strong><br>
+                                        <strong>Section: IoT</strong><br>
+                                        <strong>Absents:</strong> ${absentStudents.join(", ")}`;
+        } else {
+            attendanceList.textContent = "No students are marked absent.";
+        }
     }
 }
+

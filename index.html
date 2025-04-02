@@ -16,7 +16,13 @@
     </form>
 
     <div id="tableContainer"></div> 
-    <button id="recordBtn" style="display: none;" onclick="recordAttendance()">Record Attendance</button>
+    <div id="AttendanceSelect" style="display: none;">
+    <select id="attendanceType" >
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+    </select>
+    <button id="recordBtn"  onclick="recordAttendance()">Record Attendance</button>
+    </div>
     <p id="attendanceList"></p>
 
     <script src="./index.js"></script>
