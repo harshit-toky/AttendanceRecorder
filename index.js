@@ -96,8 +96,18 @@ function recordAttendance() {
             attendanceList.textContent = "No students are marked absent.";
         }
     }
-    document.getElementById("attendanceList").scrollIntoView({
+    document.getElementById("attendanceListDiv").style.display = "inline-block"
+    document.getElementById("attendanceListDiv").scrollIntoView({
         behavior: "smooth" // smooth scroll effect
+    });
+    
+}
+function copyAttendance(){
+    const text = document.getElementById("attendanceList").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard!");
+    }).catch(err => {
+      alert("Failed to copy text: " + err);
     });
 }
 

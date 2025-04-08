@@ -24,7 +24,18 @@
     <button id="recordBtn"  onclick="recordAttendance()">Record Attendance</button>
     </div>
     <p id="presentNo"></p>
-    <p id="attendanceList"></p>
+    <div id="attendanceListDiv" 
+     style="border: 2px solid black; display: none; max-width: 90%; width: 350px; margin: 10px auto; word-wrap: break-word; padding: 10px; box-sizing: border-box;">
+
+  <button onclick="copyAttendance()" 
+          style="height: 30px; width: 30px; float: right; background: none; border: none; cursor: pointer; padding: 0;">
+    <img src="./copy-svg.png" alt="Copy" 
+         style="height: 20px; width: 20px; display: block; margin: auto;">
+  </button>
+
+  <p id="attendanceList" style="padding-top: 5px; margin: 0;"></p>
+</div>
+
 
     <script src="./index.js"></script>
 </body>
