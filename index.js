@@ -78,7 +78,7 @@ function recordAttendance() {
     let absentStudents = allStudents.filter(student => !presentStudents.includes(student)); // Determine absent students
     
     let attendanceList = document.getElementById("attendanceList");
-
+    document.getElementById("presentNo").innerHTML = "No. of Students Present :" + presentStudents.length;
     if (document.getElementById("attendanceType").value == "Present") {
         if (presentStudents.length > 0) {
             attendanceList.innerHTML = `<strong>Attendance - ${formattedDate}</strong><br>
@@ -96,5 +96,8 @@ function recordAttendance() {
             attendanceList.textContent = "No students are marked absent.";
         }
     }
+    document.getElementById("attendanceList").scrollIntoView({
+        behavior: "smooth" // smooth scroll effect
+    });
 }
 
